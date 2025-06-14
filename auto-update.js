@@ -24,9 +24,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(reg => {
     
     // Verificar por nova versão a cada 1h
-    setInterval(() => {
-      reg.update();
-    }, 60 * 60 * 1000); // 1h
+    const ONE_MINUTE = 60 * 1000;
+    setInterval(() => reg.update(), ONE_MINUTE);
 
     reg.addEventListener('updatefound', () => {
       newWorker = reg.installing;
